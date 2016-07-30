@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">NoteApp</string>
+    <string name="db_name">userdb</string>
+    <string name="db_version">1</string>
+
+    <string name="table_name_note">note</string>
+
+    <string name="create_table_note">CREATE TABLE IF NOT EXISTS NOTE( ID INTEGER PRIMARY KEY AUTOINCREMENT, TITLE TEXT , DESCRIPTION TEXT, CREATED_DATE_TIME TEXT UNIQUE NOT NULL, MODIFIED_DATE_TIME TEXT ,TYPE INTEGER)</string>
+    <string name="insert_table_note">INSERT INTO NOTE ( TITLE, DESCRIPTION, CREATED_DATE_TIME,MODIFIED_DATE_TIME,TYPE) VALUES(?,?,?,?,?)</string>
+    <string name="update_table_note">UPDATE NOTE SET TITLE = ?, DESCRIPTION = ? , MODIFIED_DATE_TIME = ?, TYPE = ? WHERE CREATED_DATE_TIME = ?  </string>
+</resources>
