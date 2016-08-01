@@ -90,12 +90,12 @@ public class AdapterMainNotes extends RecyclerView.Adapter<AdapterMainNotes.Cust
         @Override
         public void onClick(View v) {
             if(customChildClickListener!=null){
-                customChildClickListener.onClickNoteItem(arrayListNote.get(getLayoutPosition()),getLayoutPosition());
+                customChildClickListener.onClickNoteItem(arrayListNote.get(getLayoutPosition()),getLayoutPosition(),v);
             }
         }
     }
 
     public interface CustomChildClickListener{
-        public void onClickNoteItem(Note note,int position);
+        public void onClickNoteItem(Note note,int position,View v);
     }
 }

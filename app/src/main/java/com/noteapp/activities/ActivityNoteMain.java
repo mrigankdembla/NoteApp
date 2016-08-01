@@ -1,10 +1,13 @@
 package com.noteapp.activities;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.graphics.ColorFilter;
 import android.graphics.PorterDuff;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -41,11 +44,19 @@ public class ActivityNoteMain extends AppCompatActivity implements View.OnClickL
 
         adapterMainNotes.setOnNoteItemClickListener(new AdapterMainNotes.CustomChildClickListener() {
             @Override
-            public void onClickNoteItem(Note noteItem, int position) {
+            public void onClickNoteItem(Note noteItem, int position,View v) {
                 Intent intent = new Intent(ActivityNoteMain.this,ActivityDisplayNote.class);
                 intent.putExtra("noteObj",noteItem);
+
+                ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(ActivityNoteMain.this,v.findViewById(R.id.etDescriptionNote),"description");
+
                 //intent.putExtra("noteCreatedDateTime",noteItem.createdDate + "," + noteItem.createdTime);
-                startActivity(intent);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                    startActivity(intent,options.toBundle());
+                }
+                else{
+                    startActivity(intent);
+                }
 
             }
         });
