@@ -4,7 +4,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
+import android.view.animation.Animation;
+import android.view.animation.ScaleAnimation;
 import android.widget.TextView;
 
 import com.noteapp.R;
@@ -19,6 +20,7 @@ import java.util.ArrayList;
 public class AdapterMainNotes extends RecyclerView.Adapter<AdapterMainNotes.CustomViewHolder> {
     private ArrayList<Note> arrayListNote;
     private CustomChildClickListener customChildClickListener;
+    private final static int FADE_DURATION = 1000; // in milliseconds
 
     public AdapterMainNotes(ArrayList<Note> list){
         this.arrayListNote = list;
@@ -55,9 +57,16 @@ public class AdapterMainNotes extends RecyclerView.Adapter<AdapterMainNotes.Cust
         holder.tvDelete.setVisibility(View.GONE);
         holder.tvEdit.setVisibility(View.GONE);
 
+        holder.viewDivider.setVisibility(View.GONE);
+
+
     }
 
-
+    private void setScaleAnimation(View view) {
+        ScaleAnimation anim = new ScaleAnimation(0.0f, 1.0f, 0.0f, 1.0f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+        anim.setDuration(FADE_DURATION);
+        view.startAnimation(anim);
+    }
 
 
     @Override
@@ -71,6 +80,7 @@ public class AdapterMainNotes extends RecyclerView.Adapter<AdapterMainNotes.Cust
         private TextView tvTitle;
         private TextView tvDescription;
         private TextView tvTime, tvDate, tvEdit, tvDelete;
+        private View viewDivider;
       //  private String createdDate,createdTime;
         public CustomViewHolder(View itemView) {
             super(itemView);
@@ -82,6 +92,8 @@ public class AdapterMainNotes extends RecyclerView.Adapter<AdapterMainNotes.Cust
 
             tvEdit = (TextView) itemView.findViewById(R.id.tv_edit_note);
             tvDelete = (TextView) itemView.findViewById(R.id.tv_delete_note);
+
+            viewDivider = (View) itemView.findViewById(R.id.tempview);
 
             itemView.setOnClickListener(this);
         }

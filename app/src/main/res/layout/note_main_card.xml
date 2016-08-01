@@ -9,6 +9,7 @@
     android:layout_height="wrap_content"
     android:elevation="4dp"
     android:id="@+id/cardview_main"
+    android:background="@color/colorNoteBackground"
     android:transitionName="cardviewmain"
     android:layout_margin="5dp">
 <RelativeLayout

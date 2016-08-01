@@ -7,7 +7,14 @@
     android:layout_height="match_parent"
     android:background="@color/mainLayoutBackground"
     tools:context="com.noteapp.activities.ActivityNoteMain">
+<include layout="@layout/toolbar"
+    android:visibility="gone"></include>
 
+   <android.support.v7.widget.RecyclerView
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:id="@+id/rvMain">
+   </android.support.v7.widget.RecyclerView>
    <android.support.design.widget.FloatingActionButton
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
@@ -17,11 +24,6 @@
        android:id="@+id/fabAddNote"
        android:src="@drawable/ic_add_yellow"
        />
-   <android.support.v7.widget.RecyclerView
-       android:layout_width="match_parent"
-       android:layout_height="match_parent"
-       android:id="@+id/rvMain">
-   </android.support.v7.widget.RecyclerView>
 </android.support.design.widget.CoordinatorLayout>
 
 

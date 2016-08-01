@@ -76,7 +76,7 @@ public class CustomDbHelper extends SQLiteOpenHelper {
         if(Utils.objectValidator(cursor)&&cursor.getCount() > 0){
             cursor.moveToFirst();
 
-            while(cursor.moveToNext()){
+            do{
                 Note note = new Note();
                 note.title = cursor.getString(cursor.getColumnIndexOrThrow("TITLE"));
                 note.description = cursor.getString(cursor.getColumnIndexOrThrow("DESCRIPTION"));
@@ -87,7 +87,7 @@ public class CustomDbHelper extends SQLiteOpenHelper {
                 note.createdDateTime = createdDateTime;
                 note.modifiedDateTime = modifiedDateTime;
                 noteList.add(note);
-            }
+            }while((cursor.moveToNext()));
 
 
         }

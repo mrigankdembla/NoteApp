@@ -30,7 +30,7 @@ public class ActivityDisplayNote extends AppCompatActivity implements View.OnCli
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.note_show_card);
-
+        
         Intent intent = getIntent();
         displayNoteItem = intent.getParcelableExtra("noteObj");
         createdDateTime = displayNoteItem.createdDateTime;
