@@ -21,7 +21,7 @@ public class ActivityAddNote extends AppCompatActivity implements View.OnClickLi
     private EditText etTitle;
     private EditText etDescription;
     private TextView tvTime, tvDate, tvSave;
-    private String createdDate,createdTime;
+    private String createdDateTime;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -36,11 +36,10 @@ public class ActivityAddNote extends AppCompatActivity implements View.OnClickLi
 
         //if(CustomDbHelper.getInstance(this).getCreatedDateTime())
 
-       createdDate = Utils.getDate(System.currentTimeMillis());
-        createdTime = Utils.getCurrentTime(System.currentTimeMillis());
+       createdDateTime = Utils.getDate(System.currentTimeMillis());
 
-        tvDate.setText(createdDate);
-        tvTime.setText(createdTime);
+        tvDate.setText(createdDateTime);
+
 
 
         tvSave = (TextView) findViewById(R.id.tv_save_note);
@@ -56,9 +55,9 @@ public class ActivityAddNote extends AppCompatActivity implements View.OnClickLi
     public void onClick(View v) {
         if(v.getId() == R.id.tv_save_note){
 
-            String currentDate = Utils.getDate(System.currentTimeMillis());
-            String currentTime = Utils.getCurrentTime(System.currentTimeMillis());
-            String[] string = new String[]{etTitle.getText().toString(),etDescription.getText().toString(),createdDate+","+createdTime,currentDate+","+currentTime,String.valueOf(1)};
+            String currentDateTime = Utils.getDate(System.currentTimeMillis());
+            //String currentTime = Utils.getCurrentTime(System.currentTimeMillis());
+            String[] string = new String[]{etTitle.getText().toString(),etDescription.getText().toString(),createdDateTime,currentDateTime,String.valueOf(1)};
             CustomDbHelper.getInstance(this).insertIntoTable(this.getResources().getString(R.string.table_name_note),string);
             Toast.makeText(this, "Successfully Created", Toast.LENGTH_SHORT).show();
             finish();

@@ -5,6 +5,7 @@ import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.os.Parcel;
 
 import com.noteapp.R;
 import com.noteapp.models.Note;
@@ -61,6 +62,11 @@ public class CustomDbHelper extends SQLiteOpenHelper {
 
     }
 
+    public void updateNoteTable(String[] values){
+        SQLiteDatabase db = getWritableDatabase();
+        db.execSQL(resourceString.getString(R.string.update_table_note),values);
+    }
+
 
     public ArrayList<Note> getNoteList(){
         ArrayList<Note> noteList = new ArrayList<>();
@@ -78,24 +84,22 @@ public class CustomDbHelper extends SQLiteOpenHelper {
                 String createdDateTime = cursor.getString(cursor.getColumnIndexOrThrow("CREATED_DATE_TIME"));
                 String modifiedDateTime = cursor.getString(cursor.getColumnIndexOrThrow("MODIFIED_DATE_TIME"));
 
-                String[] parseCreatedDateTime = createdDateTime.split(",");
-                if(Utils.objectValidator(parseCreatedDateTime)) {
-                    note.createdDate = parseCreatedDateTime[0];
-                    note.createdTime = parseCreatedDateTime[1];
-                }
-
-                String[] parseModifiedDateTime = modifiedDateTime.split(",");
-                if(Utils.objectValidator(parseModifiedDateTime)){
-                    note.modifiedDate = parseModifiedDateTime[0];
-                    note.modifiedTime = parseModifiedDateTime[1];
-                }
+                note.createdDateTime = createdDateTime;
+                note.modifiedDateTime = modifiedDateTime;
                 noteList.add(note);
             }
 
 
         }
+        cursor.close();
         return noteList;
     }
 
 
+    public void deleteNoteRow(String createdDateTime) {
+
+    SQLiteDatabase db = getWritableDatabase();
+        db.execSQL(resourceString.getString(R.string.delete_row_note),new String[]{createdDateTime});
+
+    }
 }

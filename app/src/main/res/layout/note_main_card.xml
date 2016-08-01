@@ -14,29 +14,46 @@
     android:layout_height="wrap_content"
     android:padding="5dp"
     android:background="@color/colorNoteBackground">
-    <EditText
+    <RelativeLayout
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/llNoteTitle"
+        android:orientation="horizontal">
+    <EditText
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textStyle="bold"
         android:id="@+id/etNoteTitle"
+        android:layout_centerVertical="true"
         android:hint="Title"
+        android:ems="15"
         android:textColorHint="#FFFFFB0E"
         android:background="@android:color/transparent"
         android:textColor="#7B1FA2"
-        android:textSize="34sp"/>
+        android:textSize="30sp"/>
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:id="@+id/iv_edit_note"
+            android:src="@drawable/ic_edit"
+            android:layout_centerVertical="true"
+            android:visibility="gone"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="5dp"
+            />
+    </RelativeLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/etNoteTitle"
+        android:layout_below="@id/llNoteTitle"
         android:layout_marginTop="10dp"
         android:id="@+id/llNoteTimeDate"
         android:orientation="horizontal">
     <TextView
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/tvNoteDate"
-        android:layout_weight="1"
-        android:gravity="center"
+        android:gravity="left"
         android:textColor="#FF22B6FA"
         android:textStyle="bold"
         android:layout_gravity="center"
@@ -50,6 +67,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:textStyle="bold"
+            android:visibility="gone"
             android:textColor="#FF22B6FA"
             android:layout_gravity="center"
             android:text="12.00pm"

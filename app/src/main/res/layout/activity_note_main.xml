@@ -13,9 +13,9 @@
        android:layout_height="wrap_content"
        android:layout_gravity="bottom|right"
        android:layout_margin="10dp"
-       app:backgroundTint="#5c2048"
+       app:backgroundTint="#7B1FA2"
        android:id="@+id/fabAddNote"
-       android:src="@drawable/ic_add_black_24dp"
+       android:src="@drawable/ic_add_yellow"
        />
    <android.support.v7.widget.RecyclerView
        android:layout_width="match_parent"

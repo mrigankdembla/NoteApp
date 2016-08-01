@@ -16,7 +16,18 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".activities.ActivityAddNote">
+        <activity
+            android:name=".activities.ActivityAddNote"
+            android:label="@string/add_note_header"></activity>
+        <activity
+            android:name=".activities.ActivityEditNote"
+            android:label="@string/edit_note_header">
+
+        </activity>
+
+        <activity
+            android:name=".activities.ActivityDisplayNote"
+            android:label="Your Note">
 
         </activity>
     </application>

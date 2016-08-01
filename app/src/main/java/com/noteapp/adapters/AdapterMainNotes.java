@@ -18,6 +18,7 @@ import java.util.ArrayList;
 
 public class AdapterMainNotes extends RecyclerView.Adapter<AdapterMainNotes.CustomViewHolder> {
     private ArrayList<Note> arrayListNote;
+    private CustomChildClickListener customChildClickListener;
 
     public AdapterMainNotes(ArrayList<Note> list){
         this.arrayListNote = list;
@@ -27,13 +28,16 @@ public class AdapterMainNotes extends RecyclerView.Adapter<AdapterMainNotes.Cust
         this.arrayListNote = list;
     }
 
-
+    public void setOnNoteItemClickListener(CustomChildClickListener customChildClickListener){
+        this.customChildClickListener = customChildClickListener;
+    }
 
     @Override
     public CustomViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
+
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View noteCard = inflater.inflate(R.layout.note_main_card,null,false);
+        View noteCard = inflater.inflate(R.layout.note_show_card,null,false);
         CustomViewHolder customViewHolder = new CustomViewHolder(noteCard);
         return customViewHolder;
 
@@ -44,14 +48,12 @@ public class AdapterMainNotes extends RecyclerView.Adapter<AdapterMainNotes.Cust
 
         Note note = arrayListNote.get(position);
 
-        holder.etTitle.setText(note.title);
-        holder.etDescription.setText(note.description);
-        holder.tvDate.setText(note.createdDate);
-        holder.tvTime.setText(note.createdTime);
-        holder.tvSave.setVisibility(View.GONE);
-
-
-
+        holder.tvTitle.setText(note.title);
+        holder.tvDescription.setText(note.description);
+        holder.tvDate.setText(note.modifiedDateTime);
+       // holder.tvTime.setText(note.modifiedTime);
+        holder.tvDelete.setVisibility(View.GONE);
+        holder.tvEdit.setVisibility(View.GONE);
 
     }
 
@@ -64,21 +66,36 @@ public class AdapterMainNotes extends RecyclerView.Adapter<AdapterMainNotes.Cust
     }
 
 
-    public class CustomViewHolder extends RecyclerView.ViewHolder{
+    public class CustomViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        private EditText etTitle;
-        private EditText etDescription;
-        private TextView tvTime, tvDate, tvSave;
+        private TextView tvTitle;
+        private TextView tvDescription;
+        private TextView tvTime, tvDate, tvEdit, tvDelete;
       //  private String createdDate,createdTime;
         public CustomViewHolder(View itemView) {
             super(itemView);
-            etTitle = (EditText) itemView.findViewById(R.id.etNoteTitle);
-            etDescription = (EditText) itemView.findViewById(R.id.etDescriptionNote);
+            tvTitle = (TextView) itemView.findViewById(R.id.etNoteTitle);
+            tvDescription = (TextView) itemView.findViewById(R.id.etDescriptionNote);
 
             tvDate = (TextView) itemView.findViewById(R.id.tvNoteDate);
             tvTime = (TextView) itemView.findViewById(R.id.tvNoteTime);
 
-            tvSave = (TextView) itemView.findViewById(R.id.tv_save_note);
+            tvEdit = (TextView) itemView.findViewById(R.id.tv_edit_note);
+            tvDelete = (TextView) itemView.findViewById(R.id.tv_delete_note);
+
+            itemView.setOnClickListener(this);
         }
+
+
+        @Override
+        public void onClick(View v) {
+            if(customChildClickListener!=null){
+                customChildClickListener.onClickNoteItem(arrayListNote.get(getLayoutPosition()),getLayoutPosition());
+            }
+        }
+    }
+
+    public interface CustomChildClickListener{
+        public void onClickNoteItem(Note note,int position);
     }
 }
