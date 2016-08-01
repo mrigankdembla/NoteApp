@@ -20,10 +20,10 @@ public class ActivityDisplayNote extends AppCompatActivity implements View.OnCli
 
     private TextView tvTitle;
     private TextView tvDescription;
-    private TextView tvModifiedDate, tvModifiedTime;
+    private TextView tvModifiedDate;
     private TextView tvEdit;
     private TextView tvDelete;
-    private String createdDateTime,modifiedDateTime;
+    private String createdDateTime;
     private Note displayNoteItem;
 
     @Override
@@ -38,7 +38,7 @@ public class ActivityDisplayNote extends AppCompatActivity implements View.OnCli
         tvTitle = (TextView) findViewById(R.id.etNoteTitle);
         tvDescription = (TextView) findViewById(R.id.etDescriptionNote);
         tvModifiedDate = (TextView) findViewById(R.id.tvNoteDate);
-        tvModifiedTime = (TextView) findViewById(R.id.tvNoteTime);
+       // tvModifiedTime = (TextView) findViewById(R.id.tvNoteTime);
 
         tvEdit = (TextView) findViewById(R.id.tv_edit_note);
         tvDelete = (TextView) findViewById(R.id.tv_delete_note);
