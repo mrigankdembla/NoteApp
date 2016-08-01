@@ -33,7 +33,7 @@
         android:hint="Title"
         android:ems="15"
         android:transitionName="title"
-        android:textColorHint="#FFFFFB0E"
+        android:textColorHint="#FA7921"
         android:background="@android:color/transparent"
         android:textColor="#7B1FA2"
         android:textSize="30sp"/>
@@ -60,7 +60,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/tvNoteDate"
         android:gravity="left"
-        android:textColor="#FF22B6FA"
+        android:textColor="#3b48ff"
         android:textStyle="bold"
         android:layout_gravity="center"
         android:text="28th July 2016"
@@ -89,8 +89,9 @@
         android:hint="Description"
         android:textColor="#7B1FA2"
         android:textStyle="bold"
+        android:textSize="20sp"
         android:background="@android:color/transparent"
-        android:textColorHint="#FFFFFB0E"
+        android:textColorHint="#FA7921"
         android:layout_below="@+id/llNoteTimeDate"
         />
 
@@ -120,7 +121,7 @@
         android:gravity="left"
         android:id="@+id/tv_save_note"
         android:paddingLeft="5dp"
-        android:textColor="#ff9524"
+        android:textColor="#FA7921"
         />
         <View
             android:layout_width="1dp"
